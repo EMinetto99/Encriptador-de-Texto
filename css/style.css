@@ -1,0 +1,145 @@
+* {
+	background-color: #F3F5FC;
+	font-family: 'Inter', sans-serif;
+	font-size: 23px;
+	font-weight: 400;
+	line-height: 150%;
+	font-style: normal;
+}
+
+main {
+	display: flex;
+}
+
+#logo-alura {
+	height: 40px;
+	margin-left: 8px;
+	padding-top: 20px;
+}
+
+#area-encriptacion {
+	margin-left: 100px;
+	margin-top: 20px;
+	margin-right: 50px;
+}
+
+#caja-de-texto {
+	height: 220px;
+	width: 380px;
+	color: #0A3871;
+	resize: none;
+	border: none;
+}
+
+#caja-de-texto:focus{
+	outline: none;
+}
+
+#leyenda-caja-de-texto {
+	font-size: 16px;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+#leyenda-caja-de-texto p{
+	opacity: 0.800000011920929;
+}
+
+#area-botones {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	align-items: flex-start;
+	padding-top: 10px;
+	gap: 24px;
+}
+
+.boton {
+	width: 186px;
+	height: auto;
+	padding: 10px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	line-height: normal;
+	border-radius: 12px;
+	align-items: flex-start;
+	border: 1px solid #0A3871;
+}
+
+#boton-encriptar {
+	color: #FFFFFF;
+	background-color: #0A3871;
+}
+
+#boton-desencriptar {
+	color: #0A3871;
+	background-color: #D8DFE8;
+}
+
+::placeholder {
+	color: #0A3871;
+}
+
+#container-area-resultante {
+	background-color: cyan;
+}
+
+#area-resultante {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: magenta;
+	padding: 21px 21px;
+	height: 350px;
+	width: 380px;
+	border-radius: 32px;
+	box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+
+#caja-texto-resultante {
+	background-color: #FFFFFF;
+	height: 220px;
+	width: 380px;
+	resize: none;
+	border: none;
+}
+
+#caja-texto-resultante:focus {
+	outline: none;
+}
+
+#area-resultante img{
+	height: 70%;
+	width: 70%;
+	justify-content: center;
+	object-fit: scale-down;
+}
+
+#leyenda-caja-texto-resultante h2{
+	color: #343A40;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 120%;
+	align-self: stretch;
+}
+
+#leyenda-caja-texto-resultante p{
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+	color: #495057;
+	text-align: center;
+	font-size: 12px;
+	font-style: normal;
+}
+
+#boton-copiar {
+	
+}
+
+.ocultar {
+	display: none;
+}
