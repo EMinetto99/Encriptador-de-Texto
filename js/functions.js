@@ -1,6 +1,11 @@
 const botonEncriptar = document.getElementById("boton-encriptar");
 const botonDesencriptar = document.getElementById("boton-desencriptar");
+const NODOcontainerImgTexto = document.getElementById("container-ImgTexto");
+const NODOareaResultante = document.getElementById("area-resultante");
 const cajaTextoResultante = document.getElementById('caja-texto-resultante');
+const imagenEncriptacion = document.getElementById("imagen-encriptacion");
+const cajaMensajeNoEncontrado = document.getElementById("leyenda-caja-texto-resultante");
+const cajaBotonCopiar = document.getElementById("container-boton-copiar");
 const botonCopiar = document.getElementById("boton-copiar");
 
 function hayTextoVacio(text){
@@ -75,12 +80,16 @@ function funcionEncriptacion(event){
 	if (!hayTextoVacio(mensaje.texto)) {
 		comprobarRestriccionTexto(mensaje);
 		if (mensaje.esValido){
-			if (event.target.name == 'botonEncriptar')
+			if (event.target.name == 'botonEncriptar'){
 				encriptar(mensaje);
-				else
-					desencriptar(mensaje);
+				imagenEncriptacion.style.display = "none";
+				cajaMensajeNoEncontrado.style.display = "none";
+				cajaTextoResultante.style.display = "block";
+			}
+			else
+				desencriptar(mensaje);
 			document.getElementById('caja-texto-resultante').value = mensaje.texto;
-			botonCopiar.classList.remove('ocultar');
+			cajaBotonCopiar.style.display = "flex";
 		}
 		else {
 			console.log(mensaje.warnings);
@@ -101,6 +110,7 @@ function funcionCopiar(e){
   	console.log("Texto copiado!");
 }
 
+// Funciones en botones
 botonEncriptar.onclick = funcionEncriptacion;
 botonDesencriptar.onclick = funcionEncriptacion;
 botonCopiar.onclick = funcionCopiar;
