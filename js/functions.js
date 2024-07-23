@@ -1,5 +1,6 @@
 const botonEncriptar = document.getElementById("boton-encriptar");
 const botonDesencriptar = document.getElementById("boton-desencriptar");
+const leyenda = document.getElementById("leyenda");
 const NODOcontainerImgTexto = document.getElementById("container-ImgTexto");
 const NODOareaResultante = document.getElementById("area-resultante");
 const cajaTextoResultante = document.getElementById('caja-texto-resultante');
@@ -26,19 +27,19 @@ function comprobarRestriccionTexto(mensaje){
 
 	if (regexAcentos.test(mensaje.texto)){
 		hayError = true;
-		mensaje.warnings += `No ingrese acentos\n`;
+		mensaje.warnings += "No ingrese acentos\n";
 	}
 	if (regexMayusculas.test(mensaje.texto)){
 		hayError = true;
-		mensaje.warnings += `No ingrese letras mayúsculas\n`;
+		mensaje.warnings += "No ingrese letras mayúsculas\n";
 	}
 	if (regexCharEspeciales.test(mensaje.texto)){
 		hayError = true;
-		mensaje.warnings += `No ingrese carácteres especiales\n`;
+		mensaje.warnings += "No ingrese carácteres especiales\n";
 	}
 	if (regexMultiplesEspacios.test(mensaje.texto)){
 		hayError = true;
-		mensaje.warnings += `Ingrese solo un espacio entre palablas\n`;
+		mensaje.warnings += "Ingrese solo un espacio entre palablas\n";
 	}
 
 	if (hayError)
@@ -90,14 +91,24 @@ function funcionEncriptacion(event){
 				desencriptar(mensaje);
 			document.getElementById('caja-texto-resultante').value = mensaje.texto;
 			cajaBotonCopiar.style.display = "flex";
+			leyenda.textContent = "Sólo letras minúsculas y sin acentos, ni números o carácteres especiales";
+			document.getElementById("leyenda-caja-de-texto").classList.remove("caja-error");
 		}
 		else {
-			console.log(mensaje.warnings);
+			console.warn(mensaje.warnings);
+			document.getElementById("leyenda-caja-de-texto").classList.add("caja-error");
+			leyenda.textContent = mensaje.warnings;
 			document.getElementById('caja-de-texto').focus();
 		}
 	} else {
-		mensaje.warnings = "No hay texto / Texto vacio";
-		console.log(mensaje.warnings);
+		console.warn("Ningún mensaje fue encontrado / El texto está vacío");
+		leyenda.textContent = "Sólo letras minúsculas y sin acentos, ni números o carácteres especiales";
+		document.getElementById("leyenda-caja-de-texto").classList.remove("caja-error");
+		// Restaurar muñeco
+		imagenEncriptacion.style.display = "block";
+		cajaMensajeNoEncontrado.style.display = "block";
+		cajaTextoResultante.style.display = "none";
+		cajaBotonCopiar.style.display = "none";
 		document.getElementById('caja-de-texto').focus();
 	}
 }
